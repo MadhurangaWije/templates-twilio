@@ -1,4 +1,4 @@
-# Templates for Twilio connector
+# Templates for Twilio connector (as a source)
 
 Twilio connector can be used in number of integrations along with other connectors. Some templates are provided in this repository to make easy your integration experience with Twilio connector as a source connector. Each template is developed to solve a unique bussiness usecase.
 
