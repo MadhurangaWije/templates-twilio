@@ -36,9 +36,6 @@ AUTH_TOKEN=""
 
 ```
 
-### Snapshot of an initial spreadsheet populated with basic data and ready for recieving user votes.
-<div style="text-align:center"><img src="./docs/resources/initial_spreadsheet.png" alt="Initial representation of the spreadsheet"/></div>
-
 ## Webhook Callback URL registration
 - Use ngrok and obtain a proxy URL.
 - Add it under the incoming message webhook URL under your twilio number in the [twilio dashboard]. 
