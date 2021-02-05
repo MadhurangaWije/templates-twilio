@@ -36,38 +36,20 @@ service websub:SubscriberService /twilio on twilioListener {
 
         // Check whethe the incoming payload is a IncomingSmsEvent and its status
         if (payload is webhook:IncomingSmsEvent && (payload.SmsStatus == webhook:RECEIVED)) {
-            
             string? messageBody = payload?.Body;
-            string emailSubject = "[no-subject]";
-            string emailBody = "";
+            string emailSubject = "Message recieved for the twilio number";
 
             if (messageBody is string) {
                 var decodedMessageBody = check encoding:decodeUriComponent(messageBody, "UTF-8");
+                log:print(decodedMessageBody);
                 
-                int recipientEmailStartIndex = 6;
-                int recipientEmailEndIndex =  <int>decodedMessageBody.indexOf("-S")-1;
-                string recipientEmailAddress = decodedMessageBody.substring(recipientEmailStartIndex, recipientEmailEndIndex);
-                log:print(string`Recipient Email: ${recipientEmailAddress}`);
-
-                int emailSubjectStartIndex = <int>decodedMessageBody.indexOf("-S")+3;
-                if(emailSubjectStartIndex>0){
-                    int emailSubjectEndIndex =  <int>decodedMessageBody.indexOf("-C")-1;
-                    emailSubject = decodedMessageBody.substring(emailSubjectStartIndex, emailSubjectEndIndex);
-                    log:print(string`Email Subject : ${emailSubject}`);
-                }
-
-                int emailBodyStartIndex = <int>decodedMessageBody.indexOf("-C")+3;
-                int emailBodyEndIndex =  <int>decodedMessageBody.length();
-                emailBody = decodedMessageBody.substring(emailBodyStartIndex, emailBodyEndIndex);
-                log:print(string`Email Body: ${emailBody}`);
-
-                // Compose the email and send
-
+                string recipientEmailAddress = "123kanishka@gmail.com";
                 string userId = "me";
+
                 gmail:MessageRequest messageRequest = {};
                 messageRequest.recipient = recipientEmailAddress;
                 messageRequest.subject = emailSubject;
-                messageRequest.messageBody = emailBody;
+                messageRequest.messageBody = decodedMessageBody;
                 //Set the content type of the mail as TEXT_PLAIN or TEXT_HTML.
                 messageRequest.contentType = gmail:TEXT_PLAIN;
                 //Send the message.
@@ -80,7 +62,7 @@ service websub:SubscriberService /twilio on twilioListener {
                     log:print(string `Sent Thread ID: ${threadId}`);
                 } else {
                     // If unsuccessful, print the error returned.
-                    log:print(string `Error: ${sendMessageResponse.message()}`);
+                    log:print(string `Error: ${sendMessageResponse.toBalString()}`);
                 }
                
             }

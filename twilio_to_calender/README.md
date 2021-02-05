@@ -2,7 +2,7 @@
 <div style="text-align:center"><img src="./docs/resources/twilio_calendar_template_overview.jpg" alt="Twilio-Google Calendar Integration template overview"/></div>
 
 ## Integration Use Case
-This integration template listens to the incoming sms (with a predefined template) and create an event in the Google Calender.
+This integration template listens to the incoming sms (with a predefined template) and create an event in the Google Calender.The users have to sent a predefined sms in the format of `Schedule <Event Titile> <Date in yyyy-MM-dd> <Time in HHmm> <Duration in hours>H` to a given Twilio number.
 
 ## Pre-requisites
 - [Ballerina Distribution](https://ballerina.io/learn/getting-started/)

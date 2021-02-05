@@ -2,7 +2,7 @@
 <div style="text-align:center"><img src="./docs/resources/twilio_gmail_template_overview.jpg" alt="Twilio-G-Mail Integration template overview"/></div>
 
 ## Integration Use Case
-This integration template listens to the incoming sms (with a predefined template) and create an e-mail and send it. The users have to sent a predefined sms in the format of `Email <To Email Address> -S <Subject> -C <Email Body>` to a given Twilio number.
+This integration template listens to the incoming SMS and forward them all as e-mail to the a pre-defined inbox. 
 
 ## Pre-requisites
 - [Ballerina Distribution](https://ballerina.io/learn/getting-started/)
